@@ -4,9 +4,6 @@ import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.*;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -47,6 +44,13 @@ public class BaseClass {
 	       return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator))); 
 	    }
 	    
+	    protected List<WebElement> getElements (String locator){
+			
+	    	List <WebElement> Lst = driver.findElements(By.xpath(locator));
+	    	return Lst;
+	      
+	    }
+	    
 	    private void waitForElement (String locator){
 			//return locator;
 	       
@@ -60,6 +64,11 @@ public class BaseClass {
 	    public void type (String locator, String textToWrite){
 	    	getElement(locator).clear();
 	    	getElement(locator).sendKeys(textToWrite);
+	    }
+	    
+	    public void typeEnterKey (String locator){
+	    
+	    	getElement(locator).sendKeys(Keys.ENTER);
 	    }
 
 	    public void goToLinkText(String link){

@@ -11,9 +11,19 @@ Then the user is able to login
           |username|password|
           |9074035006|#ranjini01|
 Scenario Outline: User able to search a movie
-Given the user navigate to https://www.primevideo.com and log in with <username> and <#ranjini01>
+Given the user navigate to https://www.primevideo.com and log in with <username> and <password>
 When user enters <moviename> in the search box
 Then movies are displayed
   Examples:
           |username|password|moviename|
           |9074035006|#ranjini01|Annabelle Comes Home|
+          
+Scenario Outline: User able to goto detail page
+Given the user navigate to https://www.primevideo.com and log in with <username> and <password>
+And user enters <moviename> in the search box
+When user click on <moviename> 
+Then it navigates to movie page
+ Examples:
+          |username|password|moviename|
+          |9074035006|#ranjini01|Annabelle Comes Home|
+          
