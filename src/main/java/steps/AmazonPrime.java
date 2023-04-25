@@ -19,9 +19,10 @@ public class AmazonPrime {
 	     // Write code here that turns the phrase above into concrete actions
 	     //throw new PendingException();
 		 amazon.navigateToAmazon();
+		 //
 	 }
 
-	 @When("^user enters (\\d+) and #ranjini(\\d+)$")
+	 @When("^user enters (.+) and (.+)$")
 	 public void user_enters_and_ranjini (String username , String pasword) throws Throwable {
 	     // Write code here that turns the phrase above into concrete actions
 	     //throw new PendingException();
@@ -35,33 +36,23 @@ public class AmazonPrime {
 	     //throw new PendingException();
 		 amazon.verifySignedIn();
 	 }
-	/*    @Given("^the user navigate to https://www.primevideo.com$")
-	    public void navigatToAmazonPage(){
+	 
+	 @Given("^the user navigate to https://www\\.primevideo\\.com and log in with (.+) and(.+)>$")
+	 public void the_user_login_to_application(String username , String pasword)
+		 {amazon.navigateToAmazon();
+		 amazon.SignIn(username,pasword);
+		 amazon.verifySignedIn();
+	 }
+	 @When("^user enters (.+) in the search box$")
+	 public void the_user_searches_moviename(String moviename)
 
-	        amazon.navigateToAmazon();
-
-	    }
-	  
-
-	   @When("^user enters (.+) and (.+)$")
-	    public void enterUsernameAndPassword(String username , String pasword){
-	        amazon.SignIn(username,pasword);
-	       
-	        //amazon.getItemsString();
-
-
-	    }
-
-	   
-
-	  @Then("^the user is able to login$")
-	    public void VerifySigned(){
-	        //amazon.addItemToCart();
-		  //Assert.isTrue(amazon.verifySignedIn(), "Successfull", "Failed");
-		// Assert.assertEquals();
-		  amazon.verifySignedIn();
-	     // Assert.assertEquals("true", String.valueOf());
-	     // Assert.
-	    }
-*/
+	 {
+		 amazon.enterMovieNameandSearch(moviename);
+		 
+	 }
+	 @Then("^movies are displayed$")
+	 public void movies_are_displayed()
+	 {
+		 amazon.verifyFilmsDisplayed();
+	 }
 }
