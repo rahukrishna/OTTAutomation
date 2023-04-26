@@ -1,15 +1,10 @@
 package steps;
-import static org.junit.Assert.*;
-
 import org.junit.runner.RunWith;
 
-import cucumber.api.PendingException;
-import cucumber.api.junit.Cucumber;
-import dev.failsafe.internal.util.Assert;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.junit.Cucumber;
 import pages.AmazonPrimePage;
 @RunWith(Cucumber.class)
 public class AmazonPrime {
@@ -60,7 +55,22 @@ public class AmazonPrime {
 	 public void it_navigates_to_movie_page(String movieName) throws Throwable {	     
 		 amazon.verifyNavigatedToMoviePage(movieName);
 	 }
-
+	 @Given("^user enters (.+) in the search box,user click on (.+)$")
+	 public void the_user_searches_moviename_and_click_on(String moviename)
+	 {
+		 amazon.enterMovieNameandSearch(moviename);		
+		 amazon.navigateToMovie(moviename);
+	 }
+	 @When("user clics on play button")
+	 public void the_user_clicks_on_play_button()
+	 {
+		 amazon.clickOnPlayButton();
+	 }
+	 @Then("Movie is playing")
+	 public void movie_is_playing()
+	 {
+		 
+	 }
 
 	 
 }

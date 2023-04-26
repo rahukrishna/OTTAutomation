@@ -26,4 +26,14 @@ Then it navigates to movie page
  Examples:
           |username|password|moviename|
           |9074035006|#ranjini01|Annabelle Comes Home|
+
+Scenario Outline: User able to Play a movie
+Given the user navigate to https://www.primevideo.com and log in with <username> and <password>
+And user enters <moviename> in the search box,user click on <moviename>
+When user clics on play button
+Then Movie is playing
+ Examples:
+          |username|password|moviename|
+          |9074035006|#ranjini01|Annabelle Comes Home|
+          
           

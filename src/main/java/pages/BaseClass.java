@@ -12,22 +12,20 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BaseClass {
 	 protected static WebDriver driver;
 	    public static WebDriverWait wait;
-	    //public Duration duration = Duration.between(firstStop, lastStop);
-	    static{
+	   public  static void LaunchBrowser(){
 	    	 System.setProperty(
 			            "webdriver.chrome.driver",
 			            "F:\\Learning\\chromedriver.exe"); 
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--remote-allow-origins=*");
-	       // System.setProperty("webdriver.chrome.driver","src/test/resources/chromedriver.exe");
-	        //ChromeOptions chromeoptions = new ChromeOptions();
 	        driver = new ChromeDriver(options);
-	        //wait = new WebDriverWait(driver,Duration.ofSeconds(30));
+	        wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 	    }
 	   
 		public BaseClass(WebDriver driver){
+			LaunchBrowser();
 	    	BaseClass.driver = driver;
-	    	//wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+	    	
 	      //  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	    }
 		
@@ -41,7 +39,8 @@ public class BaseClass {
 	    
 	    protected WebElement getElement (String locator){
 			//return locator;
-	       return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator))); 
+	       //return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
+	    	return driver.findElement(By.xpath(locator));
 	    }
 	    
 	    protected List<WebElement> getElements (String locator){

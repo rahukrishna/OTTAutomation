@@ -4,14 +4,16 @@ import org.junit.AfterClass;
 import org.junit.runner.RunWith;
 
 import cucumber.api.CucumberOptions;
-import cucumber.api.junit.Cucumber;
+import io.cucumber.junit.Cucumber;
 import pages.BaseClass;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
         features="src/test/Resources",
         glue={"steps"},
-       // plugin={"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:", "json:target/cucumber-reports.json"},
+        		plugin= {"json:target/RunCuke/cucumber.json",
+                        "pretty","html:target/RunCuke/cucumber.html",
+                        "com.cucumber.listener.ExtentCucumberFormatter"},
         tags="@Amazon"
 )
 public class runner {

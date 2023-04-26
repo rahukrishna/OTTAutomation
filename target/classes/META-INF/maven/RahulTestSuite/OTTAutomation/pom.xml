@@ -8,11 +8,29 @@
   <artifactId>OTTAutomation</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <dependencies>
+	   <dependency>
+  <groupId>info.cukes</groupId>
+  <artifactId>cucumber-junit</artifactId>
+   <version>1.2.5</version>
+   </dependency>
 	  <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 <dependency>
     <groupId>org.seleniumhq.selenium</groupId>
     <artifactId>selenium-java</artifactId>
     <version>4.8.3</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
+<dependency>
+    <groupId>com.aventstack</groupId>
+    <artifactId>extentreports</artifactId>
+    <version>5.0.9</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/tech.grasshopper/extentreports-cucumber6-adapter -->
+<dependency>
+    <groupId>tech.grasshopper</groupId>
+    <artifactId>extentreports-cucumber6-adapter</artifactId>
+    <version>2.1.0</version>
 </dependency>
 <dependency>
     <groupId>io.cucumber</groupId>
@@ -43,11 +61,7 @@
     <artifactId>cucumber-java</artifactId>
     <version>1.2.5</version>
 </dependency>
-    <dependency>
-  <groupId>info.cukes</groupId>
-  <artifactId>cucumber-junit</artifactId>
-   <version>1.2.5</version>
-   </dependency>
+
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
