@@ -59,6 +59,23 @@ public class BaseClass {
 	    public void clickElement(String locator){
 	    	getElement(locator).click();
 	    }
+	    public void clickJS(String locator)
+	    {
+	    	WebElement Element = getElement(locator);
+	    	JavascriptExecutor executor = (JavascriptExecutor)driver;
+	    	executor.executeScript("arguments[0].click();", Element);
+	    }
+	    public void typeJS(String locator, String value)
+	    {
+	    	WebElement Element = getElement(locator);
+	    	JavascriptExecutor executor = (JavascriptExecutor)driver;
+	    	executor.executeScript("arguments[0].value='"+ value +"';", Element);
+	    }
+	    public void pressEnterKeyJS(String locator) 
+		 {
+			
+	    	getElement(locator).submit();
+		 }
 
 	    public void type (String locator, String textToWrite){
 	    	getElement(locator).clear();

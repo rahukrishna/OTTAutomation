@@ -1,4 +1,6 @@
 package steps;
+import java.awt.AWTException;
+
 import org.junit.runner.RunWith;
 
 import io.cucumber.java.en.Given;
@@ -34,7 +36,7 @@ public class AmazonPrime {
 		 amazon.verifySignedIn();
 	 }
 	 @When("^user enters (.+) in the search box$")
-	 public void the_user_searches_moviename(String moviename)
+	 public void the_user_searches_moviename(String moviename) throws AWTException
 	 {
 		 amazon.enterMovieNameandSearch(moviename);		 
 	 }
@@ -56,7 +58,7 @@ public class AmazonPrime {
 		 amazon.verifyNavigatedToMoviePage(movieName);
 	 }
 	 @Given("^user enters (.+) in the search box,user click on (.+)$")
-	 public void the_user_searches_moviename_and_click_on(String moviename)
+	 public void the_user_searches_moviename_and_click_on(String moviename) throws AWTException
 	 {
 		 amazon.enterMovieNameandSearch(moviename);		
 		 amazon.navigateToMovie(moviename);

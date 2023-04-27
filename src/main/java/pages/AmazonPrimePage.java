@@ -1,12 +1,13 @@
 package pages;
 
+import java.awt.AWTException;
 import java.util.List;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
+import static org.junit.Assert.*;
 public class AmazonPrimePage extends BaseClass {
 	
 	 
@@ -22,12 +23,15 @@ public class AmazonPrimePage extends BaseClass {
 	private String signInButton = "//input[@id='signInSubmit']";
 	private String HomeButton = "//a[@class='RsC68p']/span";
 	private String searchButton = "//input[@class='HBmJQt']";
-	private String searchBox = "//input[@class='HBmJQt']";
+	private String searchBox = "//input[@id='pv-search-nav']";
 	private String searchResults ="//div[@class='K0Kf63 _9kJogN']/parent::div";
 	private String movieList = "//div[@class='OKS56b']//a";
 	private String moviePageHeader ="//h1";
 	public String playButtton ="//*[@id='dv-action-box']//span/parent::a";
-	
+	    /*private String pickThirdItem2="//div[@class='sg-col-inner']//div[@class='a-section a-spacing-small a-spacing-top-small']//div[@class='a-section a-spacing-none puis-padding-right-small s-title-instructions-style']//h2[@class='a-size-mini a-spacing-none a-color-base s-line-clamp-2']//a[@class='a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal']";
+	    /*private String addToCart = "//input[@id='add-to-cart-button']";
+	    private String addToCartMsg = "//span[contains(text(),'Agregado al carrito')]";*/
+	    
 	 public void navigateToAmazon(){
 	       launchURL("https://www.primevideo.com/");
 	    }
@@ -36,16 +40,20 @@ public class AmazonPrimePage extends BaseClass {
 	    }//div[@class='OKS56b']//a
 	 
 	 public void SignIn(String username, String password){
+		 clickElement(navigatetosigninButton);
 	        type(userNameTextbox,username);
 	        type(passwordTextbox,password);
 	        clickElement(signInButton);
 	        
 	    }
-	 public void enterMovieNameandSearch(String MovieName){
+	 public void enterMovieNameandSearch(String MovieName) throws AWTException{
 	      
-	        clickElement(searchBox);
-	        type(searchBox,MovieName);
-	        typeEnterKey(searchBox);
+	        clickJS(searchBox);
+	        typeJS(searchBox,MovieName);
+	        //pressEnterKey();
+	        pressEnterKeyJS(searchBox);
+	        //typeEnterKey(searchBox);
+	        
 	        
 	    }
 	 public boolean verifySearchResults(String MovieName){
@@ -54,6 +62,7 @@ public class AmazonPrimePage extends BaseClass {
 			 return true;
 	        
 	    }
+	
 	 
 	 public boolean verifyFilmsDisplayed(){
 	      
@@ -91,12 +100,13 @@ public class AmazonPrimePage extends BaseClass {
 		 String test = textFromElement(moviePageHeader);
 		 if (!test.contains(movieName))
 		 {
-			 Assert.fail(); 
+			 //Assert.isTrue(false, test, null);
+			 Assert.assertFalse(false);
+			 //Assert.fail(); 
 		 }
 		
 	        
 	    }
-	 
 	 public void clickOnPlayButton(){
 		 clickElement(playButtton);
 	        
