@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+/* Base class module*/
 public class BaseClass {
 	 protected static WebDriver driver;
 	    public static WebDriverWait wait;
@@ -26,7 +27,7 @@ public class BaseClass {
 			LaunchBrowser();
 	    	BaseClass.driver = driver;
 	    	
-	      //  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	      
 	    }
 		
 		public static void launchURL(String url){
